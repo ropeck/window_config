@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#$ sudo crontab -l | grep sync
+# 30 6 * * * /home/ropeck/sync-backup
+
+mount -t drvfs '\\nas\nas' /mnt/nas
+#rsync -aX $(find  /mnt/e/Macrium/ -mtime -1  -type f) /mnt/nas $*
+rsync -aX /mnt/e/Macrium/ /mnt/nas $*
