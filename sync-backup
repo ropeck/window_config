@@ -2,7 +2,12 @@
 
 #$ sudo crontab -l | grep sync
 # 30 6 * * * /home/ropeck/sync-backup
-
+RUNNING=$(ps -eflww | grep -c rsync)
+if [ $RUNNING -ne 1 ]; then
+	echo "rsync active"
+	ps -eflww|grep rsync
+	exit 1
+fi
 /usr/bin/mount -o rw -t drvfs '\\nas\nas' /mnt/nas || exit 1
 #rsync -aX $(find  /mnt/e/Macrium/ -mtime -1  -type f) /mnt/nas $*
 /usr/bin/rsync -a --delete /mnt/e/Macrium/backup/ /mnt/nas/backup $*
