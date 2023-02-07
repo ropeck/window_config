@@ -2,7 +2,7 @@
 
 #$ sudo crontab -l | grep sync
 # 30 6 * * * /home/ropeck/sync-backup
-RUNNING=$(ps -eflww | grep -c rsync)
+RUNNING=$(ps -eflww | grep -c usr/bin/rsync)
 if [ $RUNNING -ne 1 ]; then
 	echo "rsync active"
 	ps -eflww|grep rsync
