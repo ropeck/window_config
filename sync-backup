@@ -10,6 +10,11 @@ if [ $RUNNING -ne 1 ]; then
 	exit 1
 fi
 
+if [ -f /mnt/e/Macrium/backup/backup_running ]; then
+	echo "backup running"
+	exit 1
+fi
+
 # Function takes a single argument, the number of seconds
 show_time() {
     # Catch arguments
