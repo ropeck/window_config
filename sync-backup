@@ -38,7 +38,7 @@ show_time() {
 
 /usr/bin/mount -o rw -t drvfs '\\nas\nas' /mnt/nas || exit 1
 #rsync -aX $(find  /mnt/e/Macrium/ -mtime -1  -type f) /mnt/nas $*
-/usr/bin/rsync -a --delete /mnt/e/Macrium/backup/ /mnt/nas/backup $*
+/usr/bin/rsync --stats -a --delete /mnt/*/Macrium/backup/ /mnt/nas/backup $*
 echo -n "elapsed time: "
 show_time $(($(date +%s) - $start))
 
